@@ -1,0 +1,6 @@
+*.log*
+.dccache
+.user.yml
+target/
+venv/
+integration_tests/dbt_packages/

@@ -1,0 +1,20 @@
+name: 'integration_tests'
+version: '1.0'
+config-version: 2
+
+require-dbt-version: [">=1.4.6"]
+
+seed-paths: ["seeds"]
+
+profile: 'integration_tests'
+
+target-path: "target"  
+clean-targets:         
+  - "target"
+  - "dbt_packages"
+  - "logs"
+
+seeds:
+  integration_tests:
+    +column_types:
+      _loaded_at_utc: timestamp

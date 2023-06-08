@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: contacts_joined_with_transactions
+    config:
+      materialized: view
+    columns:
+      - name: id
+        tests:
+          - not_null
+          - unique

@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: salesforce 
+    config:
+      enabled: true
+    database: dbt  
+    schema: public 
+    tables:
+      - name: contacts
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null

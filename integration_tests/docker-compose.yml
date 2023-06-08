@@ -1,0 +1,16 @@
+version: '3'
+services:
+    postgres:
+        image: postgres:13
+        environment:
+            POSTGRES_USER: dbt 
+            POSTGRES_PASSWORD: dbt 
+            POSTGRES_DB: dbt 
+        ports:
+            - 5432:5432
+        healthcheck:
+            test: [CMD, pg_isready, -U, dbt]
+            interval: 5s
+            retries: 5
+        restart: always
+        
