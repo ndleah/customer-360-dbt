@@ -1,15 +1,19 @@
 version: 2
 
 sources:
-  - name: salesforce 
+  - name: salesforce
     config:
       enabled: true
     database: dbt  
     schema: public 
+
     tables:
       - name: contacts
         columns:
           - name: id
             tests:
-              - unique
+              - unique:
+                  config:
+                    error_if: '>1000'
               - not_null
+

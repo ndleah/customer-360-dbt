@@ -2,10 +2,24 @@ version: 2
 
 sources:
   - name: web 
+    
+    # DB connection
+    database: dbt  
+    schema: public
+
     config:
       enabled: true
-    database: dbt  
-    schema: public 
+    
+    # freshness test
+    freshness:
+      warn_after:
+        count: 1
+        period: day
+      error_after:
+        count: 3
+        period: day
+    loaded_at_field: _loaded_at_utc
+
     tables:
       - name: transactions
         description: Contains a record per transaction made by customers
