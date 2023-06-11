@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: dim_contacts
+    description: Contains customer contact
+    test:
+      - dbt_utils.fewer_rows_than:
+        compare_model: ref('stg_sf__contacts')
+    columns:
+      - name: contact_id
+        description: Primary key
+        tests:
+          - not_null
+          - unique
+      - name: user_name
+        meta:
+          sensitive: true
+      - name: email_address
+        meta:
+          sensitive: true
+      - name: name
+        meta:
+          sensitive: true
