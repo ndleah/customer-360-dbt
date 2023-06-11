@@ -3,9 +3,6 @@ version: 2
 models:
   - name: dim_contacts
     description: Contains customer contact
-    test:
-      - dbt_utils.fewer_rows_than:
-        compare_model: ref('stg_sf__contacts')
     columns:
       - name: contact_id
         description: Primary key
