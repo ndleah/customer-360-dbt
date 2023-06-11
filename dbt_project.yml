@@ -21,6 +21,15 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   customer360:
     staging:
-      +materialized: table
+      +schema: staging
+      +materialized: view
     marts:
       +materialized: table
+
+seeds:
+    +enabled: true
+    +schema: "{% if target.name == 'local' %}seeds{% else %}{{ target.schema }}{% endif %}"
+
+tests:
+  +store_failures: true
+  +schema: test
