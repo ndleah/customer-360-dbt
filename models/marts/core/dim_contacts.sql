@@ -1,3 +1,10 @@
+{{ config(
+    indexes=[
+        {'columns': ['contact_id'], 'unique': True},
+        ]
+    ) 
+}}
+
 with
 
 -- contact data coming from DB by default
