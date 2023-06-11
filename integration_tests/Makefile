@@ -11,6 +11,8 @@ setup: ## Starts DB in a docker container, installs DBT packages (including the 
 	dbt deps
 	@echo $(SEP)
 	dbt seed 
+	@echo $(SEP)
+	dbt source freshness
 
 .PHONY: teardown
 teardown: ## Shuts down the docker container(s) and cleans up DBT artifacts
@@ -21,5 +23,5 @@ teardown: ## Shuts down the docker container(s) and cleans up DBT artifacts
 
 .PHONY: models
 models: ## Builds DBT models and all the tests
-	dbt build 
+	dbt build
 
