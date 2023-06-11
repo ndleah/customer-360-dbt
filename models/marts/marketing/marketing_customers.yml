@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: marketing_customers
+    description: Contains customer contact
+    columns:
+      - name: contact_id
+        tests:
+          - not_null
+          - unique
