@@ -82,6 +82,8 @@ customer360
 [Implement PII on sensitive columns](https://github.com/ndleah/dbt-hipages/issues/7)
 
 ### Others
+[Implement Kimball modelling](https://github.com/ndleah/dbt-hipages/issues/10)
+
 [Improve dbt_project.yml config](https://github.com/ndleah/dbt-hipages/issues/21)
 
 [Performance tuning](https://github.com/ndleah/dbt-hipages/pull/27)
