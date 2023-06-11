@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fct_transactions
+    description: Contains a record per transaction made by customers
+    test:
+      - dbt_utils.fewer_rows_than:
+        compare_model: ref('stg_web__transactions')
+    columns:
+      - name: transaction_id
+        description: Primary key
+        tests:
+          - not_null
+          - unique
+      - name: contact_id
+        description: Foreign key
+        tests:
+          - not_null

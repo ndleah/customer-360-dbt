@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: marketing_transactions
+    columns:
+      - name: transaction_id
+        tests:
+          - not_null
+          - unique
