@@ -5,15 +5,59 @@
 > * **Author:** [Leah Nguyen](https://www.linkedin.com/in/ndleah/)
 > * This repository consists of a [dbt](https://www.getdbt.com/) project that transforms raw data sources into clear, formatted models for the customer360 data.
 
-## ⚙️ Usage
+### Pre-requisites
 
+The project assumes these tools are available:
+
++ Makefile
++ Python 3.9+ ([python.org](https://www.python.org/downloads/), [Anaconda](https://www.anaconda.com/download), [pyenv](https://github.com/pyenv/pyenv) etc)
++ Docker, Docker Compose (https://www.docker.com/products/docker-desktop/)
+
+You'd likely need a Postgres client to see what models look like. Here's [one](https://dbeaver.io/).
+
+### Development
+
+The `integration_tests` directory is set up to work through this exercise, including:
++ starting a Postgres container and seeding it with fake data
++ running models and tests included in the parent package (see [packages.yml](./integration_tests/packages.yml), [profiles.yml](./integration_tests/profiles.yml))
++ tear down
++ a `Makefile` for running the above tasks (try `make help`)
+
+---
+
+Follow these steps (assumes you are in `integration_tests` directory):
+
+1. Set up Python virtual environment and install dependencies (including DBT + Postgres adaptor):
+```sh
+$> python -m venv venv
+$> source venv/bin/activate
+$> pip install -r requirements.txt
+```
+
+2. Start database and populate with sample datasets: 
+```sh
+$> make setup
+```
+
+3. Run and test models using DBT
+```sh
+$> make models
+```
+
+4. Tear down (will destroy the DB container)
+```sh
+$> make teardown
+```
+
+
+## ⚙️ Usage
 To document my approaches to the assessment, I have created a series of GitHub issues accompanied by corresponding pull requests. Each issue contains a summary of my approach as a comment at the end of the page. For your convenience, I have provided the links to all the issues below.
 
-By accessing these links, you can review the details of my approaches and gain a deeper understanding of the assessment process. When in doubt, please review a list of all issues related to this assessment [here](https://github.com/ndleah/dbt-hipages/issues?q=is%3Aissue+is%3Aclosed). Feel free to refer to these resources for further reference and clarification.
+By accessing these links, you can review the details of my approaches and gain a deeper understanding of the assessment process. When in doubt, please review a list of all issues related to this assessment [here](https://github.com/ndleah/customer-360-dbt/issues?q=is%3Aissue+is%3Aclosed). Feel free to refer to these resources for further reference and clarification.
 
 ## 🚧 Data Infrastructure
 
-I made some significant changes to the dbt project infrastructure by implementing Kimball data modelling. For more details, please further review it [here](https://github.com/ndleah/dbt-hipages/issues/10).
+I made some significant changes to the dbt project infrastructure by implementing Kimball data modelling. For more details, please further review it [here](https://github.com/ndleah/customer-360-dbt/issues/10).
 
 The final dbt project structure will look something as this:
 ```
